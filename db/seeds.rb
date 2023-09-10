@@ -12,18 +12,56 @@ else
 end
 
 
-# Create Users
-user1 = User.new(email: 'user1@example.com', password: 'password', first_name: 'John', last_name: 'Doe')
-user2 = User.new(email: 'user2@example.com', password: 'password', first_name: 'Jane', last_name: 'Smith')
+# db/seeds.rb
 
-# Save the users to the database and check if they were saved successfully
-if user1.save && user2.save
-  # Create Pets Associated with Users
-  pet1 = user1.pets.create(name: 'Fluffy', species: 'Dog', age: 3)
-  pet2 = user1.pets.create(name: 'Whiskers', species: 'Cat', age: 2)
-  pet3 = user2.pets.create(name: 'Buddy', species: 'Dog', age: 4)
+# Create sample users
+User.create!(
+  email: 'user1@example.com',
+  password: 'password1',
+  first_name: 'John',
+  last_name: 'Doe',
+  admin: false
+)
 
-  puts 'Seed data has been created!'
-else
-  puts 'Error: Users were not saved to the database.'
+User.create!(
+  email: 'user2@example.com',
+  password: 'password2',
+  first_name: 'Jane',
+  last_name: 'Smith',
+  admin: true
+)
+
+# Create sample pets associated with users
+User.all.each do |user|
+  Pet.create!(
+    name: 'Buddy',
+    age: 3,
+    owner: "#{user.first_name} #{user.last_name}",
+    species: 'Dog',
+    gender: 'Male',
+    color: 'Brown',
+    date_of_birth: Date.new(2020, 5, 10),
+    health_score: 9.5,
+    personality_traits: 'Friendly, Playful',
+    pet_status: 'Active',
+    bio: 'A lovable dog who enjoys long walks in the park.',
+    weight: 25.5,
+    user: user
+  )
+
+  Pet.create!(
+    name: 'Whiskers',
+    age: 2,
+    owner: "#{user.first_name} #{user.last_name}",
+    species: 'Cat',
+    gender: 'Female',
+    color: 'Gray',
+    date_of_birth: Date.new(2021, 2, 15),
+    health_score: 8.0,
+    personality_traits: 'Independent, Curious',
+    pet_status: 'Healthy',
+    bio: 'A playful and independent cat who loves chasing toys.',
+    weight: 8.7,
+    user: user
+  )
 end

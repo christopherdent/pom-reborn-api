@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_09_215817) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_10_020442) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_09_215817) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.string "species"
+    t.string "gender"
+    t.string "color"
+    t.date "date_of_birth"
+    t.integer "health_score"
+    t.string "personality_traits"
+    t.string "pet_status"
+    t.string "bio"
+    t.float "weight"
     t.index ["user_id"], name: "index_pets_on_user_id"
   end
 

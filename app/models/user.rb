@@ -6,6 +6,7 @@ class User < ApplicationRecord
     validates :last_name, presence: true
     scope :admin, -> { where(admin: true) }
     scope :general, -> { where(admin: false) }
+    validate :max_pets_per_user
     has_secure_password
   
   
@@ -24,5 +25,18 @@ class User < ApplicationRecord
       def full_name
         "#{self.last_name}, #{self.first_name}"
       end
+
+      
+  def max_pets_per_user
+    # Count the number of pets associated with this user
+    pet_count = pets.count
+
+    # Set the maximum allowed pets per user
+    max_pets = 3
+
+    if pet_count >= max_pets
+      errors.add(:base, "You can't have more than #{max_pets} pets.")
+    end
+  end
   
   end

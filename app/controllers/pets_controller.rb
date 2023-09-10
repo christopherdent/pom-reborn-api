@@ -5,4 +5,9 @@ class PetsController < ApplicationController
         render json: @pets
       end
 
+      def show_dogs
+        @dogs = Pet.by_species("Dog")
+        render json: @dogs
+      end
+
 end
