@@ -5,7 +5,7 @@ answer = gets.chomp.downcase
 if answer == 'y'
     Pet.destroy_all
     User.destroy_all
-    puts 'Terminated'
+    puts 'Old records destroyed, new seeds being created...'
 else
   puts 'Nothing seeds added. Exiting...'
   exit

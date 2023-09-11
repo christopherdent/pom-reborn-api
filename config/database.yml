@@ -14,7 +14,8 @@ default: &default
   database: your_database_name
   username: postgres
   password: mysecretpassword # Use the password you specified when starting the PostgreSQL container
-  host: localhost
+  # host: localhost
+  host: 10.0.0.33
   port: 5432 # The port mapping from the container to your host
 
 development:
