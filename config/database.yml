@@ -32,3 +32,4 @@ production:
   database: pom-api-prod
   username: pom
   password: <%= ENV['POM_REBORN_API_DATABASE_PASSWORD'] %>
+  host: localhost
