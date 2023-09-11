@@ -1,3 +1,13 @@
+# default: &default
+#   adapter: postgresql
+#   encoding: unicode
+#   database: your_database_name
+#   username: postgres
+#   password: mysecretpassword # Use the password you specified when starting the PostgreSQL container
+#   host: localhost
+#   port: 5432 # The port mapping from the container to your host
+
+
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -11,42 +21,9 @@ development:
   <<: *default
   database: pom_reborn_api_development
 
-  # The specified database role being used to connect to postgres.
-  # To create additional roles in postgres see `$ createuser --help`.
-  # When left blank, postgres will use the default role. This is
-  # the same name as the operating system user running Rails.
-  #username: pom_reborn_api
-
-  # The password associated with the postgres role (username).
-  #password:
-
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
 test:
   <<: *default
   database: pom_reborn_api_test
-
-# As with config/credentials.yml, you never want to store sensitive information,
-# like your database password, in your source code. If your source code is
-# ever seen by anyone, they now have access to your database.
-#
-# Instead, provide the password or a full connection URL as an environment
-# variable when you boot the app. For example:
-#
-#   DATABASE_URL="postgres://myuser:mypass@localhost/somedatabase"
-#
-# If the connection URL is provided in the special DATABASE_URL environment
-# variable, Rails will automatically merge its configuration values on top of
-# the values provided in this file. Alternatively, you can specify a connection
-# URL environment variable explicitly:
-#
-#   production:
-#     url: <%= ENV["MY_APP_DATABASE_URL"] %>
-#
-# Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
-# for a full overview on how database connection configuration can be specified.
-#
 
 production:
   <<: *default
