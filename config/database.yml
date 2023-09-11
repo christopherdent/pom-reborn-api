@@ -1,4 +1,3 @@
-
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -19,7 +18,7 @@ development:
   #username: pom_reborn_api
 
   # The password associated with the postgres role (username).
-  #password:  
+  #password:
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -50,6 +49,6 @@ test:
 #
 
 production:
-  database: pom_reborn_api_production
-  username: mypomappuser
+  database: pom-api-prod
+  username: pom
   password: <%= ENV['POM_REBORN_API_DATABASE_PASSWORD'] %>
