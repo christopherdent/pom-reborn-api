@@ -49,6 +49,8 @@ test:
 #
 
 production:
+  <<: *default
+  adapter: postgresql
   database: pom-api-prod
   username: pom
   password: <%= ENV['POM_REBORN_API_DATABASE_PASSWORD'] %>
